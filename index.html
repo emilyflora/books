@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="form" id="form-display">
+        <form>
+        <div class="form-header">
+            <h2>Add New Book</h2>
+            <button id="close-form" class="form-close">&times;</p>
+        </div>
+        <div class="form-content">
+            <div class="input">
+                <label for="title">Book title*</label>
+                <input type="text" placeholder="The Hobbit" id="title" name="title" maxlength="100" minlength="2" required>
+            </div>
+            <div class="input">
+                <label for="author">Book author*</label>
+                <input type="text" placeholder="J. R. R. Tolkien" name="author" id="author" maxlength="100" minlength="2" required>
+            </div>
+            <div class="input">
+                <label for="pages">Page count*</label>
+                <input type="number" placeholder="304" name="pages" id="pages" maxlength="5" minlength="1" required>
+            </div>
+            <div class="input">
+                <label for="status">Status*</label>
+                <select name="status" id="status">
+                    <option value="" disabled selected>Select:</option>
+                    <option value="complete">Complete</option>
+                    <option value="in-progress">In progress</option>
+                    <option value="not-started">Not started</option>
+                    <option value="dropped">Dropped</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button type="button" class="add-button main-button" id="submit-form">Add to Library</button>
+        </div>
+        </form>
+    </div>
+    <div id="overlay"></div>
+    <div class="main">
+        <div class="header">
+            <div class="header-left">
+                <img src="/logo.svg" alt="Books logo" class="logo">
+                <h1 id="page-title">Library</h1>
+            </div>
+            <div class="header-right">
+                <button class="main-button add-button" id="open-form">Add New</button>
+                <button class="main-button clear-button" id="clear-all">Clear All</button>
+            </div>
+        </div>
+        <div class="content" id="card-container">
+        </div>
+    </div>
+    <script src="books.js"></script>
+</body>
+</html>
