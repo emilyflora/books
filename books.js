@@ -35,22 +35,34 @@ function clearFields() {
     userBookStatus.value = "";
 }
 
-function parseLibrary() {
-    const cardContainer = document.getElementById('card-container');
-    for (let i = 0; i < myLibrary.length; i++) {
-        const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + i + '">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
-        cardContainer.innerHTML += card;
-    }
-}
+// function parseLibrary() {
+//     const cardContainer = document.getElementById('card-container');
+//     for (let i = 0; i < myLibrary.length; i++) {
+//         const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + i + '">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
+//         cardContainer.innerHTML += card;
+//         myLibrary.length = 0;
+//     }
+// }
 
 function addBookToLibrary() {
     myLibrary.length = 0;
     const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
     myLibrary.push(newBook);
-    parseLibrary();
+    const cardContainer = document.getElementById('card-container');
+    for (let i = 0; i < myLibrary.length; i++) {
+        const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + i + '">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
+        cardContainer.innerHTML += card;
+    }
     form.classList.remove('active');
     overlay.classList.remove('active');
     clearFields();
 }
 
-// //Delete card with trash can click
+// Delete card with trash can click
+const cardDelete = document.querySelectorAll('#delete')
+
+// addEventListener('click', )
+
+function deleteCard() {
+
+}
