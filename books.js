@@ -35,21 +35,10 @@ function clearFields() {
     userBookStatus.value = "";
 }
 
-// function addBookToLibrary() {
-//     const cardContainer = document.getElementById('card-container');
-//     const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
-//     myLibrary.push(newBook);
-//     const card = '<div class="card"><span class="material-symbols-outlined delete">delete</span><h2>' + newBook.title + '</h2><p class="author">By: ' + newBook.author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + newBook.pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + newBook.bookStatus + '</p></div>';
-//     cardContainer.innerHTML += card;
-//     form.classList.remove('active');
-//     overlay.classList.remove('active');
-//     clearFields();
-// }
-
 function parseLibrary() {
     const cardContainer = document.getElementById('card-container');
     for (let i = 0; i < myLibrary.length; i++) {
-        const card = '<div class="card"><span class="material-symbols-outlined delete">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
+        const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + i + '">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
         cardContainer.innerHTML += card;
     }
 }
@@ -65,4 +54,3 @@ function addBookToLibrary() {
 }
 
 // //Delete card with trash can click
-// const deleteCard = document.querySelectorAll('span.delete')
