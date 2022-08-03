@@ -14,9 +14,6 @@ closeFormButton.addEventListener('click', () => {
 })
 
 //Add new book with form entry
-const addButton = document.getElementById('submit-form')
-const cardContainer = document.getElementById('card-container')
-
 let myLibrary = [];
 
 function Book(title, author, pages, bookStatus) {
@@ -26,28 +23,20 @@ function Book(title, author, pages, bookStatus) {
     this.bookStatus = bookStatus;
 }
 
-const userTitle = document.getElementById('title').value
-const userAuthor = document.getElementById('author').value
-const userPages = document.getElementById('pages').value
-const userBookStatus = document.getElementById('status').value
-const newBook = new Book(userTitle, userAuthor, userPages, userBookStatus)
-
-console.log(newBook)
-console.log(myLibrary)
+let userTitle = document.getElementById('title')
+let userAuthor = document.getElementById('author')
+let userPages = document.getElementById('pages')
+let userBookStatus = document.getElementById('status')
 
 function addBookToLibrary() {
+    const cardContainer = document.getElementById('card-container')
+    const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value)
     myLibrary.push(newBook);
-    console.log(myLibrary);
-}
-
-const card = '<div class="card"><span class="material-symbols-outlined delete">delete</span><h2>' + myLibrary.slice(0,1).toString() + '</h2><p class="author">By: ' + myLibrary.slice(1,2).toString() + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary.slice(2,3).toString() + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary.slice(3,4).toString() + '</p></div>'
-
-addButton.addEventListener('click', () => {
-    addBookToLibrary();
+    const card = '<div class="card"><span class="material-symbols-outlined delete">delete</span><h2>' + newBook.title + '</h2><p class="author">By: ' + newBook.author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + newBook.pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + newBook.bookStatus + '</p></div>'
     cardContainer.innerHTML += card;
     form.classList.remove('active');
     overlay.classList.remove('active');
-})
+}
 
 // //Delete card with trash can click
 // const deleteCard = document.querySelectorAll('span.delete')
