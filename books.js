@@ -27,6 +27,7 @@ let userTitle = document.getElementById('title');
 let userAuthor = document.getElementById('author');
 let userPages = document.getElementById('pages');
 let userBookStatus = document.getElementById('status');
+const cardContainer = document.getElementById('card-container');
 
 function clearFields() {
     userTitle.value = "";
@@ -38,7 +39,6 @@ function clearFields() {
 function addBookToLibrary() {
     const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
     myLibrary.push(newBook);
-    const cardContainer = document.getElementById('card-container');
     const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + (myLibrary.length-1) + '">delete</span><h2>' + myLibrary[myLibrary.length-1].title + '</h2><p class="author">By: ' + myLibrary[myLibrary.length-1].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[myLibrary.length-1].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[myLibrary.length-1].bookStatus + '</p></div>';
     cardContainer.innerHTML += card;
     form.classList.remove('active');
@@ -47,10 +47,19 @@ function addBookToLibrary() {
 }
 
 // Delete card with trash can click
-// const cardDelete = document.querySelectorAll('#delete')
+// const cardDelete = document.querySelectorAll('#delete');
 
-// addEventListener('click', )
+// cardDelete.addEventListener('click', () => {
+
+// });
 
 // function deleteCard() {
 
 // }
+
+// Clear all cards
+function clearAll() {
+    if (window.confirm("Are you sure you want to clear your library?")) {
+        cardContainer.innerHTML = "";
+    }
+}
