@@ -39,7 +39,7 @@ function addBookToLibrary() {
     const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
     myLibrary.push(newBook);
     const cardContainer = document.getElementById('card-container');
-    const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + myLibrary.length + '">delete</span><h2>' + myLibrary[myLibrary.length-1].title + '</h2><p class="author">By: ' + myLibrary[myLibrary.length-1].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[myLibrary.length-1].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[myLibrary.length-1].bookStatus + '</p></div>';
+    const card = '<div class="card"><span class="material-symbols-outlined delete" data-array="' + (myLibrary.length-1) + '">delete</span><h2>' + myLibrary[myLibrary.length-1].title + '</h2><p class="author">By: ' + myLibrary[myLibrary.length-1].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[myLibrary.length-1].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[myLibrary.length-1].bookStatus + '</p></div>';
     cardContainer.innerHTML += card;
     form.classList.remove('active');
     overlay.classList.remove('active');
