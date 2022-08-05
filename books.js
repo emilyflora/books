@@ -59,7 +59,8 @@ function addBookToLibrary() {
 
 // Clear all cards
 function clearAll() {
-    if (window.confirm("Are you sure you want to clear your library?")) {
-        cardContainer.innerHTML = "";
-    }
+    if (myLibrary.length > 0) {
+        if (window.confirm("Are you sure you want to clear your library?")) {
+            cardContainer.innerHTML = "";
+    }}
 }
