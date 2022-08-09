@@ -1,3 +1,5 @@
+let myLibrary = [];
+
 //Open and close form buttons
 const openFormButton = document.getElementById('open-form');
 const closeFormButton = document.getElementById('close-form');
@@ -14,17 +16,17 @@ closeFormButton.addEventListener('click', () => {
 })
 
 // Delete card with trash can click
-// On click, identify data attribute value of trash, match value to library array, remove array data from library, refresh library display
 function trash() {
-    const dataValue = document.querySelector('[data-value]');
-    dataValue.addEventListener('click', () => {
-        console.log('hi')
+    const dataValues = document.querySelector('[data-value]');
+    dataValues.addEventListener('click', (e) => {
+        const cardValue = e.currentTarget.dataset.value;
+        myLibrary.splice(cardValue,1);
+        cardContainer.innerHTML = '';
+        libraryDisplay();
     });
 }
 
 //Add new book with form entry
-let myLibrary = [];
-
 function Book(title, author, pages, bookStatus) {
     this.title = title;
     this.author = author;
@@ -45,19 +47,24 @@ function clearFields() {
     userBookStatus.value = "";
 }
 
-function addBookToLibrary() {
-    const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
-    myLibrary.push(newBook);
-    console.log(myLibrary);
-    const card = '<div class="card"><span class="material-symbols-outlined delete" data-value="' + (myLibrary.length-1) + '">delete</span><h2>' + myLibrary[myLibrary.length-1].title + '</h2><p class="author">By: ' + myLibrary[myLibrary.length-1].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[myLibrary.length-1].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[myLibrary.length-1].bookStatus + '</p></div>';
+function libraryDisplay() {
+for(i=0; i<myLibrary.length; i++) {
+    const card = '<div class="card"><span class="material-symbols-outlined delete" data-value="' + i + '">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
     if(cardContainer.innerHTML !== '') {
-        cardContainer.insertAdjacentHTML('afterbegin', card)
+        cardContainer.insertAdjacentHTML('afterbegin', card);
     } else {
         cardContainer.innerHTML += card;
     }
+}}
+
+function addBookToLibrary() {
+    cardContainer.innerHTML = '';
+    const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
+    myLibrary.push(newBook);
     form.classList.remove('active');
     overlay.classList.remove('active');
     clearFields();
+    libraryDisplay();
     trash();
 }
 
