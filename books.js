@@ -17,13 +17,15 @@ closeFormButton.addEventListener('click', () => {
 
 // Delete card with trash can click
 function trash() {
-    const dataValues = document.querySelector('[data-value]');
-    dataValues.addEventListener('click', (e) => {
-        const cardValue = e.currentTarget.dataset.value;
-        myLibrary.splice(cardValue,1);
-        cardContainer.innerHTML = '';
-        libraryDisplay();
-    });
+    const dataValues = Array.from(document.querySelectorAll('[data-value]'));
+    dataValues.forEach(value => {
+        value.addEventListener('click', (e) => {
+            const cardValue = e.currentTarget.dataset.value;
+            myLibrary.splice(cardValue,1);
+            cardContainer.innerHTML = '';
+            libraryDisplay();
+        });
+    })
 }
 
 //Add new book with form entry
