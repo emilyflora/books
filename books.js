@@ -76,7 +76,7 @@ function clearAll() {
 // Edit book information
 function changeStatus(e) {
     const cardStatus = e.getAttribute('data-status');
-    if (myLibrary[cardStatus].bookStatus = 'Incomplete') {
+    if (myLibrary[cardStatus].bookStatus == 'Incomplete') {
         myLibrary[cardStatus].bookStatus = 'Complete';
     } else {
         myLibrary[cardStatus].bookStatus = 'Incomplete';
