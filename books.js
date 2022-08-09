@@ -19,8 +19,6 @@ closeFormButton.addEventListener('click', () => {
 function trash(e) {
     const dataValues = Array.from(document.querySelectorAll('[data-value]'));
     const cardValue = e.getAttribute('data-value');
-    console.log(dataValues)
-    console.log(cardValue)
     myLibrary.splice(cardValue,1);
     libraryDisplay();
 }
@@ -63,7 +61,6 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     form.classList.remove('active');
     overlay.classList.remove('active');
-    console.log(myLibrary);
     clearFields();
     libraryDisplay();
 }
