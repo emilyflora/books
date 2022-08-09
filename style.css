@@ -84,10 +84,21 @@ p {
     color: var(--lightred);
 }
 
-.delete:hover {
-    color: var(--darkred);
+.edit {
+    color: var(--darkgray);
+}
+
+.delete:hover, .edit:hover {
     cursor: pointer;
     transition: all .3s;
+}
+
+.delete:hover {
+    color: var(--darkred);
+}
+
+.edit:hover {
+    color: var(--black);
 }
 
 .form {
@@ -196,6 +207,11 @@ p {
 .separator {
     border-bottom: 1px solid var(--darkgray);
     margin: 1rem 0;
+}
+
+.status {
+    display: flex;
+    gap: 0.2rem;
 }
 
 /* IDs */

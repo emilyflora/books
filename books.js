@@ -17,7 +17,6 @@ closeFormButton.addEventListener('click', () => {
 
 // Delete card with trash can click
 function trash(e) {
-    const dataValues = Array.from(document.querySelectorAll('[data-value]'));
     const cardValue = e.getAttribute('data-value');
     myLibrary.splice(cardValue,1);
     libraryDisplay();
@@ -47,7 +46,7 @@ function clearFields() {
 function libraryDisplay() {
     cardContainer.innerHTML = '';
     for(i=0; i<myLibrary.length; i++) {
-        const card = '<div class="card"><span class="material-symbols-outlined delete" data-value= "' + i + '" onclick="trash(this)">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
+        const card = '<div class="card"><span class="material-symbols-outlined delete" data-value= "' + i + '" onclick="trash(this)">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status: </span>' + myLibrary[i].bookStatus + '<span class="material-symbols-outlined edit" data-status="' + i + '" onclick="changeStatus(this)">autorenew</span></p></div>';
         if(cardContainer.innerHTML !== '') {
             cardContainer.insertAdjacentHTML('afterbegin', card);
         } else {
@@ -75,3 +74,12 @@ function clearAll() {
 }
 
 // Edit book information
+function changeStatus(e) {
+    const cardStatus = e.getAttribute('data-status');
+    if (myLibrary[cardStatus].bookStatus = 'Incomplete') {
+        myLibrary[cardStatus].bookStatus = 'Complete';
+    } else {
+        myLibrary[cardStatus].bookStatus = 'Incomplete';
+    }
+    libraryDisplay();
+}
