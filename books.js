@@ -16,16 +16,13 @@ closeFormButton.addEventListener('click', () => {
 })
 
 // Delete card with trash can click
-function trash() {
+function trash(e) {
     const dataValues = Array.from(document.querySelectorAll('[data-value]'));
-    dataValues.forEach(value => {
-        value.addEventListener('click', (e) => {
-            const cardValue = e.currentTarget.dataset.value;
-            myLibrary.splice(cardValue,1);
-            cardContainer.innerHTML = '';
-            libraryDisplay();
-        });
-    })
+    const cardValue = e.getAttribute('data-value');
+    console.log(dataValues)
+    console.log(cardValue)
+    myLibrary.splice(cardValue,1);
+    libraryDisplay();
 }
 
 //Add new book with form entry
@@ -50,13 +47,14 @@ function clearFields() {
 }
 
 function libraryDisplay() {
-for(i=0; i<myLibrary.length; i++) {
-    const card = '<div class="card"><span class="material-symbols-outlined delete" data-value="' + i + '">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
-    if(cardContainer.innerHTML !== '') {
-        cardContainer.insertAdjacentHTML('afterbegin', card);
-    } else {
-        cardContainer.innerHTML += card;
-    }
+    cardContainer.innerHTML = '';
+    for(i=0; i<myLibrary.length; i++) {
+        const card = '<div class="card"><span class="material-symbols-outlined delete" data-value= "' + i + '" onclick="trash(this)">delete</span><h2>' + myLibrary[i].title + '</h2><p class="author">By: ' + myLibrary[i].author + '</p><div class="separator"></div><p class="pages"><span style="font-weight:bold">Length:</span> ' + myLibrary[i].pages + ' pages</p><p class="status"><span style="font-weight:bold">Status:</span> ' + myLibrary[i].bookStatus + '</p></div>';
+        if(cardContainer.innerHTML !== '') {
+            cardContainer.insertAdjacentHTML('afterbegin', card);
+        } else {
+            cardContainer.innerHTML += card;
+        }
 }}
 
 function addBookToLibrary() {
@@ -65,16 +63,17 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     form.classList.remove('active');
     overlay.classList.remove('active');
+    console.log(myLibrary);
     clearFields();
     libraryDisplay();
-    trash();
 }
 
 // Clear all cards
 function clearAll() {
     if (myLibrary.length > 0) {
         if (window.confirm("Are you sure you want to clear your library?")) {
-            cardContainer.innerHTML = "";
+            myLibrary = [];
+            libraryDisplay();
     }}
 }
 
