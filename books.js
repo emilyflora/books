@@ -15,14 +15,6 @@ closeFormButton.addEventListener('click', () => {
 
 // Delete card with trash can click
 // On click, identify data attribute value of trash, match value to library array, remove array data from library, refresh library display
-// function trashButton() {
-//     const dataArray = Array.from(document.querySelectorAll('[data-value]'));
-//     console.log(dataArray);
-//     for(i = 0; i < dataArray.length; i++) {
-//         dataArray[i].addEventListener('click', () => { 
-
-//         });
-// }}
 function trash() {
     const dataValue = document.querySelector('[data-value]');
     dataValue.addEventListener('click', () => {
