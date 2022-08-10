@@ -56,11 +56,15 @@ function libraryDisplay() {
 
 function addBookToLibrary() {
     cardContainer.innerHTML = '';
-    const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
-    myLibrary.push(newBook);
-    form.classList.remove('active');
-    overlay.classList.remove('active');
-    clearFields();
+    if(userTitle.value.length>=1 && userAuthor.value.length>=1 && userPages.value>=1 && userBookStatus.value!=="Select") {
+        const newBook = new Book(userTitle.value, userAuthor.value, userPages.value, userBookStatus.value);
+        myLibrary.push(newBook);
+        form.classList.remove('active');
+        overlay.classList.remove('active');
+        clearFields();
+    } else {
+        alert("Please complete all fields.")
+    }
     libraryDisplay();
 }
 
